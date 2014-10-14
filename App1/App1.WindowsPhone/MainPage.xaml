@@ -8,7 +8,48 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="LayoutRoot">
 
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="page title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+			<Grid Grid.Column="0" Grid.Row="1" Margin="50,10,0,0" Width="Auto">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+				<TextBlock Grid.Row="0" Grid.Column="0">
+				<Run Text="First Name"/>
+				</TextBlock>
+				<TextBlock Grid.Row="1" Grid.Column="0">
+				<Run Text="Last Name"/>
+				</TextBlock>
+				<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding MyCustomer.FirstName}" />
+				<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MyCustomer.LastName}" />
+				<Button Grid.Row="2" Grid.Column="1" Content="Update Name" Command="{Binding UpdateNameCommand}">
+				</Button>
+			</Grid>
+		</Grid>
     </Grid>
 </Page>
