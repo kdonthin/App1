@@ -106,5 +106,10 @@ namespace App1
         }
 
         #endregion
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			pageRoot.Frame.Navigate(typeof(PageTwo), ((MainPageViewModel)DataContext).MyCustomer);
+		}
     }
 }
